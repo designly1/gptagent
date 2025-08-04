@@ -1,12 +1,15 @@
+// Weather checking tool definition - gets current weather data using Open-Meteo API
+// This tool allows the AI to fetch real-time weather information for any location
 import type { ToolType } from '@/lib/types';
 import { createToolType, createOpenAIToolSchema } from '@/lib/tool-utils';
 
+// Input parameters for weather checking
 export interface CheckWeatherParams extends Record<string, unknown> {
-  location: string;
-  unit?: 'celsius' | 'fahrenheit';
+  location: string; // Location name, city, or coordinates
+  unit?: 'celsius' | 'fahrenheit'; // Temperature unit (optional, defaults to fahrenheit)
 }
 
-// Open-Meteo API response interfaces
+// Open-Meteo API response interfaces - these match the external API structure
 export interface OpenMeteoWeatherData {
   latitude: number;
   longitude: number;

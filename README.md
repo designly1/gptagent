@@ -63,6 +63,8 @@ The executable entry point is `src/index.ts`, which imports `runCli` from the CL
 | **`forward_geocode`**| `address` (string) | list of places including `display_name`, `lat`, `lon` and address fields | Converts an address into latitude/longitude using the [maps.co](https://maps.co/) API.  Requires `GEOCODE_API_KEY` to be set. |
 | **`reverse_geocode`**| `latitude` (number), `longitude` (number) | list of matching places with `display_name`, `lat` and `lon` | Converts coordinates back into a human‑readable address using the maps.co API.  Requires `GEOCODE_API_KEY`. |
 
+An API key is required for geocoding, but you can obtain a free one at [geocode.maps.co](https://geocode.maps.co/).
+
 Each tool is defined in a `def.ts` file using the `createToolType()` and `createOpenAIToolSchema()` helpers.  The corresponding `handler.ts` file implements the tool logic and returns a JSON object that matches the declared return type.  Tools can log debug messages using `printLog()`.
 
 ---
@@ -168,6 +170,8 @@ Which result would you like to look up in detail? Reply with a number (1‑2).
 ```
 
 If you reply with `1`, the assistant will call the `get` tool to fetch the selected page and then call `check_weather` for Paris.  The final answer will include both textual information and the current temperature.
+
+You can run the agent in interactive mode or supply a query directly on the command line to get an immediate response.
 
 Conversation history is saved to `data/history.json` and is automatically loaded for subsequent questions.  To clear the history, delete that file.  To enable verbose debugging of tool calls, set `DEBUG=1` in your `.env` file; log messages will be written to `debug.log`.
 

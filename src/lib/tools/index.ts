@@ -1,4 +1,8 @@
-// Export all tool definitions and handlers
+// Tools index - centralized exports for all available tools
+// This file provides a single import point for all tool definitions and handlers
+// It also includes a convenience setup function for batch tool registration
+
+// Export all tool definitions and handlers for external use
 export * from './check-weather/def';
 export * from './check-weather/handler';
 export * from './geocode/def';
@@ -8,7 +12,7 @@ export * from './websearch/handler';
 export * from './get/def';
 export * from './get/handler';
 
-// Re-export for convenience
+// Import dependencies for the convenience setup function
 import { toolRegistry } from '@/lib/tool-registry';
 import { checkWeatherTool } from './check-weather/def';
 import { checkWeatherHandler } from './check-weather/handler';
@@ -20,6 +24,12 @@ import {
 import { webSearchTool } from './websearch/def';
 import { webSearchHandler } from './websearch/handler';
 
+/**
+ * Convenience function to register all built-in tools at once
+ * This provides an alternative to the tool bridge's initialization
+ * Note: The tool bridge handles registration automatically, so this is mainly
+ * useful for testing or alternative initialization patterns
+ */
 export function setupTools(): void {
   toolRegistry.register(checkWeatherTool, checkWeatherHandler);
   toolRegistry.register(forwardGeocodeTool, forwardGeocodeHandler);

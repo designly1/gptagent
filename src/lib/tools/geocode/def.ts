@@ -1,3 +1,5 @@
+// Geocoding tool definitions - convert between addresses and coordinates
+// These tools allow the AI to find coordinates for locations and vice versa
 import type { ToolType } from '@/lib/types';
 import { createToolType, createOpenAIToolSchema } from '@/lib/tool-utils';
 

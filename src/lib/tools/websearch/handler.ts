@@ -1,7 +1,15 @@
+// Web search handler - implements search functionality using SearxNG
+// This handler connects to a local SearxNG instance to perform web searches
 import type { ToolHandler } from '@/lib/types';
 import type { WebSearchParams, WebSearchResult, SearxResponse } from './def';
 import { printLog } from '@/lib/tool-utils';
 
+/**
+ * Web search tool handler
+ * Connects to SearxNG running on localhost:8080 to perform searches
+ * @param params - Contains query and optional numResults
+ * @returns Formatted search results with titles, URLs, and snippets
+ */
 export const webSearchHandler: ToolHandler<
   WebSearchParams,
   WebSearchResult
